@@ -2,11 +2,12 @@ import { Details } from '../presentation/details';
 import { List } from '../presentation/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
+import { getPersonDetails, getPersonList } from '../data';
 
 export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
-  const { loadingPersonList, personList } = usePersonList();
+  const { loadingPersonList, personList } = usePersonList(getPersonList);
   const { loadingPersonDetails, personDetails, showPersonDetails } =
-    usePersonDetails();
+    usePersonDetails(getPersonDetails);
 
   return (
     <>
