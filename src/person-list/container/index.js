@@ -4,6 +4,12 @@ import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 import { getPersonDetails, getPersonList } from '../data';
 
+/**
+ * @param {Object} props
+ * @param {Function?} props.usePersonList
+ * @param {Function?} props.usePersonDetails
+ * @returns {React.ReactElement}
+ */
 export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
   const { loadingPersonList, personList } = usePersonList(getPersonList);
   const { loadingPersonDetails, personDetails, showPersonDetails } =

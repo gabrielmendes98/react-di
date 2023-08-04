@@ -1,3 +1,9 @@
+/**
+ * @param {Object} props
+ * @param {PersonList} props.list
+ * @param {function} props.handleShowDetails
+ * @returns {React.ReactElement}
+ */
 export const List = ({ list, handleShowDetails }) => (
   <ul>
     {list.map((person) => (
