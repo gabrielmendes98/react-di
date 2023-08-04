@@ -3,10 +3,7 @@ import { List } from '../presentation/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 
-export const PersonListContainer = ({
-  usePersonList = _usePersonList,
-  usePersonDetails = _usePersonDetails,
-}) => {
+export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
   const { loadingPersonList, personList } = usePersonList();
   const { loadingPersonDetails, personDetails, showPersonDetails } =
     usePersonDetails();
@@ -24,4 +21,9 @@ export const PersonListContainer = ({
       {loadingPersonDetails && <div>Loading person details...</div>}
     </>
   );
+};
+
+PersonListContainer.defaultProps = {
+  usePersonList: _usePersonList,
+  usePersonDetails: _usePersonDetails,
 };
