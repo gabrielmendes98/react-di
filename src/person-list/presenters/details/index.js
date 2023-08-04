@@ -1,3 +1,8 @@
+/**
+ * @param {Object} props
+ * @param {PersonDetails} props.details
+ * @returns {React.ReactElement}
+ */
 export const Details = ({ details }) => (
   <>
     <h2>Person details:</h2>
