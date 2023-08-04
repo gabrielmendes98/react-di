@@ -1,9 +1,12 @@
 import { Details } from '../presentation/details';
 import { List } from '../presentation/list';
-import { usePersonList } from '../hooks/use-person-list';
-import { usePersonDetails } from '../hooks/use-person-details';
+import { usePersonList as _usePersonList } from '../hooks/use-person-list';
+import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 
-export const PersonListContainer = () => {
+export const PersonListContainer = ({
+  usePersonList = _usePersonList,
+  usePersonDetails = _usePersonDetails,
+}) => {
   const { loadingPersonList, personList } = usePersonList();
   const { loadingPersonDetails, personDetails, showPersonDetails } =
     usePersonDetails();

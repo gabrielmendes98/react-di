@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import { getPersonDetails } from '../../../services/person';
+import { getPersonDetails as _getPersonDetails } from '../../../services/person';
 
-export const usePersonDetails = (
-  getPersonDetailsService = getPersonDetails
-) => {
+export const usePersonDetails = (getPersonDetails = _getPersonDetails) => {
   const [loadingPersonDetails, setLoadingPersonDetails] = useState(false);
   const [personDetails, setPersonDetails] = useState(false);
 
   const showPersonDetails = (id) => {
     setLoadingPersonDetails(true);
-    getPersonDetailsService(id).then((details) => {
+    getPersonDetails(id).then((details) => {
       setLoadingPersonDetails(false);
       setPersonDetails(details);
     });
