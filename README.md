@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# React Dependency Injection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Camadas de Arquitetura
 
-## Available Scripts
+O projeto é organizado em quatro camadas distintas:
 
-In the project directory, you can run:
+### Camada Domain
 
-### `npm start`
+A camada Domain é responsável por definir os objetos de domínio do aplicativo. Aqui são encontradas as entidades centrais, interfaces de repositório e lógica fundamental que reflete as regras de negócios do sistema.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Camada Application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A camada Application assume a responsabilidade de implementar a lógica de negócios do aplicativo. Ela utiliza os objetos de domínio definidos na camada Domain para criar os casos de uso e interações que representam a funcionalidade central do aplicativo.
 
-### `npm test`
+### Camada Infrastructure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A camada Infrastructure desempenha um papel crucial na orquestração do aplicativo. Aqui, a lógica de negócios da camada Application é combinada com serviços do mundo real, como APIs e armazenamentos. Além disso, a camada Infrastructure converte os objetos de domínio em objetos compreensíveis para as fontes de dados e vice-versa.
 
-### `npm run build`
+### Camada Routing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A camada Routing lida com a navegação e roteamento do usuário. É responsável por encaminhar as solicitações do usuário para os controladores apropriados nas outras camadas, iniciando assim o fluxo de funcionalidades do aplicativo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Estrutura de Pastas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A estrutura de pastas adotada no projeto é projetada para refletir a organização das diferentes camadas da arquitetura. Isso promove a clareza e facilita a localização de diferentes partes do código.
 
-### `npm run eject`
+- **Domain**: Nesta pasta, estão definidos os objetos de domínio, como entidades e interfaces de repositório.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Hooks**: A pasta Hooks é onde a lógica de negócios é implementada. Ela utiliza a camada Data para buscar dados de fontes externas, como APIs ou armazenamentos, e cria os casos de uso necessários para a camada Application.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Data**: A camada Data é responsável pela integração com serviços externos, como APIs e armazenamentos. Ela também realiza a conversão entre os objetos de domínio e os formatos de dados exigidos pelas fontes externas.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Container**: A pasta Container é responsável por orquestrar as regras de negócios e a lógica dos apresentadores. Ela utiliza os Hooks da camada Application e fornece as dependências necessárias para os controladores.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Presenters**: Nesta pasta, estão os componentes de interface do usuário (UI). Eles são focados exclusivamente na apresentação visual e não contêm lógica de negócios.
 
-## Learn More
+- **Routes**: A pasta Routes atua como o ponto de entrada da aplicação. Ela chama os containers apropriados para as rotas definidas, dando início ao fluxo de funcionalidades.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<pre>
+├── src
+│   ├── api
+│   ├── components
+│   ├── commons
+│   ├── features
+│   │   ├── feat1
+│   │   │   ├── container
+│   │   │   ├── data
+│   │   │   ├── domain
+│   │   │   ├── hooks
+│   │   │   └── presenters
+│   │   ├── feat2
+│   │   ├── ...
+├── public
+│   ├── index.html
+│   └── manifest, etc.
+└── config.files
+</pre>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Architecture
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="./resources/layers.jpg" />
+<img src="./resources/architecture.jpg" />
