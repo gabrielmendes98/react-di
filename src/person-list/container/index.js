@@ -1,5 +1,5 @@
-import { Details } from '../presentation/details';
-import { List } from '../presentation/list';
+import { Details } from '../presenters/details';
+import { List } from '../presenters/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 import { getPersonDetails, getPersonList } from '../data';
