@@ -14,3 +14,13 @@
  * @property {String} name
  * @property {Number} age
  */
+
+// Repositories
+
+/**
+ * @typedef {function(): Promise<PersonList>} GetPersonList
+ */
+
+/**
+ * @typedef {function(number): Promise<PersonDetails>} GetPersonDetails
+ */

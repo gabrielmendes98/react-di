@@ -6,8 +6,8 @@ import { getPersonDetails, getPersonList } from '../data';
 
 /**
  * @param {Object} props
- * @param {Function?} props.usePersonList
- * @param {Function?} props.usePersonDetails
+ * @param {import('../hooks/use-person-list').UsePersonList} props.usePersonList
+ * @param {import('../hooks/use-person-details').UsePersonDetails} props.usePersonDetails
  * @returns {React.ReactElement}
  */
 export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {

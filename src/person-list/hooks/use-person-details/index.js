@@ -8,16 +8,13 @@ import { useState } from 'react';
  */
 
 /**
- * @param {function(number): Promise<PersonDetails>} getPersonDetails
- * @returns {ReturnObject}
+ * @typedef {function(GetPersonDetails): ReturnObject} UsePersonDetails
+ * @type {UsePersonDetails}
  */
 export const usePersonDetails = (getPersonDetails) => {
   const [loadingPersonDetails, setLoadingPersonDetails] = useState(false);
   const [personDetails, setPersonDetails] = useState(false);
 
-  /**
-   * @param {number} id - The ID of the person to fetch details for.
-   */
   const showPersonDetails = (id) => {
     setLoadingPersonDetails(true);
     getPersonDetails(id).then((details) => {

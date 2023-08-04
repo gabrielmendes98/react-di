@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
  */
 
 /**
- * @param {function(): Promise<PersonList>} getPersonList
- * @returns {ReturnObject}
+ * @typedef {function(GetPersonList): ReturnObject} UsePersonList
+ * @type {UsePersonList}
  */
 export const usePersonList = (getPersonList) => {
   const [loadingPersonList, setLoadingPersonList] = useState(true);
