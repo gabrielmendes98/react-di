@@ -5,7 +5,7 @@ export const usePersonList = (getPersonList) => {
   const [personList, setPersonList] = useState([]);
 
   useEffect(() => {
-    getPersonList('/persons').then((list) => {
+    getPersonList().then((list) => {
       setLoadingPersonList(false);
       setPersonList(list);
     });
