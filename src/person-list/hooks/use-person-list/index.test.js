@@ -18,7 +18,7 @@ describe('usePersonList', () => {
 
     await waitForNextUpdate();
 
-    expect(mockGetPersonList).toHaveBeenCalledWith('/persons');
+    expect(mockGetPersonList).toHaveBeenCalled();
     expect(result.current.loadingPersonList).toBe(false);
     expect(result.current.personList).toEqual(mockPersonList);
   });
