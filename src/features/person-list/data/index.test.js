@@ -1,8 +1,8 @@
 import { getPersonList, getPersonDetails } from './index';
-import { api } from '../../api';
+import { api } from '../../../api';
 import { mapPersonList } from './mappers';
 
-jest.mock('../../api');
+jest.mock('../../../api');
 
 describe('getPersonList', () => {
   it('should call api.get with "/persons"', async () => {

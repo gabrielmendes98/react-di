@@ -50,6 +50,7 @@ A estrutura de pastas adotada no projeto é projetada para refletir a organizaç
 │   │   │   └── presenters
 │   │   ├── feat2
 │   │   ├── ...
+│   ├── routes
 ├── public
 │   ├── index.html
 │   └── manifest, etc.

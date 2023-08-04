@@ -1,5 +1,5 @@
 import './App.css';
-import { PersonListContainer } from './person-list/container';
+import { PersonListContainer } from './features/person-list/container';
 
 function App() {
   return (
