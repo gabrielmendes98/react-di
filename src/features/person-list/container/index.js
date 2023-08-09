@@ -3,6 +3,8 @@ import { List } from '../presenters/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 import { getPersonDetails, getPersonList } from '../data';
+import { useRoute } from '../../../routes';
+import { Button } from '../../../components';
 
 /**
  * @param {Object} props
@@ -15,8 +17,14 @@ export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
   const { loadingPersonDetails, personDetails, showPersonDetails } =
     usePersonDetails(getPersonDetails);
 
+  const { push } = useRoute();
+
   return (
     <>
+      <Button onClick={() => push('/register')}>register employee</Button>
+      <Button onClick={() => push('/dfkjnwedkjewqkdqewkk')}>
+        unregistered route
+      </Button>
       <h1>Person container</h1>
       {personList && !loadingPersonList && (
         <List list={personList} handleShowDetails={showPersonDetails} />

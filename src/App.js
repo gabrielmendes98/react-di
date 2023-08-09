@@ -1,10 +1,13 @@
 import './App.css';
-import { PersonListContainer } from './features/person-list/container';
+import { RouteProvider } from './routes';
+import { Router } from './routes/router';
 
 function App() {
   return (
-    <div className='App'>
-      <PersonListContainer />
+    <div className="App">
+      <RouteProvider>
+        <Router />
+      </RouteProvider>
     </div>
   );
 }
