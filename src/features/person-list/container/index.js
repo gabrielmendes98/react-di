@@ -21,7 +21,7 @@ export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
 
   return (
     <>
-      <Button onClick={() => push('/register')}>register employee</Button>
+      <Button onClick={() => push('/register')}>register person</Button>
       <Button onClick={() => push('/dfkjnwedkjewqkdqewkk')}>
         unregistered route
       </Button>
