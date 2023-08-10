@@ -1,3 +1,4 @@
+import { NestedOne } from '../features/nested-1/container';
 import { PersonListContainer } from '../features/person-list/container';
 import { PersonRegisterContainer } from '../features/person-register/container';
 import { Notfound } from './not-found';
@@ -29,5 +30,10 @@ export const routes: Routes = {
     path: '/register',
     title: 'Register Person',
     component: PersonRegisterContainer,
+  },
+  '/nested-1': {
+    path: '/nested-1',
+    title: 'Nested One',
+    component: NestedOne,
   },
 };

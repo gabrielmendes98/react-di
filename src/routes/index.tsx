@@ -5,13 +5,18 @@ type Props = {
   children: React.ReactNode;
 };
 
-type Stack = Route[];
+type Stack = Route[][];
+
+type PushOptions = {
+  newStack?: boolean;
+};
 
 type RouteContextType = {
   stack: Stack;
-  push: (path: string, title: string) => void;
-  goBack: () => void;
+  push: (path: string, options?: PushOptions) => void;
+  goBack: (path?: string) => void;
   currentRoute: Route;
+  currentStack: Route[];
 };
 
 const RouteContext = React.createContext<RouteContextType | null>(null);
@@ -25,32 +30,71 @@ export const useRoute = () => {
 };
 
 export const RouteProvider = ({ children }: Props) => {
-  const [stack, setStack] = useState<Stack>([defaultRoute]);
+  const [stack, setStack] = useState<Stack>([[defaultRoute]]);
 
-  const currentRoute = useMemo(() => stack[stack.length - 1], [stack]);
+  console.log(stack);
 
-  const push = useCallback((path: string) => {
+  const currentStack = useMemo(() => stack[stack.length - 1], [stack]);
+  const currentRoute = useMemo(
+    () => stack[stack.length - 1][currentStack.length - 1],
+    [currentStack, stack]
+  );
+
+  const push = useCallback((path: string, { newStack = false } = {}) => {
     let routeToAdd = routes[path];
     if (!routeToAdd) {
       routeToAdd = notFoundRoute;
     }
-    setStack((init) => [...init, routeToAdd]);
+    if (newStack) {
+      setStack((initStack) => [...initStack, [routeToAdd]]);
+    } else {
+      setStack((initStack) => {
+        const newStack = [...initStack];
+        newStack[newStack.length - 1].push(routeToAdd);
+        return newStack;
+      });
+    }
   }, []);
 
-  const goBack = useCallback(() => {
-    setStack((init) => {
-      const newStack = [...init];
-      newStack.pop();
+  const goBack = useCallback((path?: string) => {
+    if (stack.length === 1 && currentStack.length === 1) {
+      return;
+    }
+
+    if (path) {
+      const index = currentStack.findIndex((route) => route.path === path);
+      if (index === -1) {
+        throw new Error('Route not found');
+      }
+      setStack((initStack) => {
+        const newStack = [...initStack];
+        newStack[newStack.length - 1] = newStack[newStack.length - 1].slice(
+          0,
+          index + 1
+        );
+        return newStack;
+      });
+      return;
+    }
+
+    setStack((initStack) => {
+      const newStack = [...initStack];
+      newStack[newStack.length - 1].pop();
+      if (newStack[newStack.length - 1].length === 0) {
+        newStack.pop();
+      }
       return newStack;
     });
   }, []);
 
   const value = useMemo(
-    () => ({ stack, push, goBack, currentRoute }),
-    [stack, push, goBack, currentRoute]
+    () => ({ stack, push, goBack, currentRoute, currentStack }),
+    [stack, push, goBack, currentRoute, currentStack]
   );
 
   return (
     <RouteContext.Provider value={value}>{children}</RouteContext.Provider>
   );
 };
+
+// [[x, x, x], [a, a], [b]]

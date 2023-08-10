@@ -1,7 +1,7 @@
 import { Button } from '../../../components';
 import { useRoute } from '../../../routes';
 
-export const PersonRegisterContainer = () => {
+export const NestedOne = () => {
   const { goBack, push } = useRoute();
 
   const handleBack = () => {
@@ -11,8 +11,8 @@ export const PersonRegisterContainer = () => {
   return (
     <div>
       <Button onClick={handleBack}>back</Button>
-      <Button onClick={() => push('/nested-1')}>nest more</Button>
-      <h1>PersonRegisterContainer</h1>
+      <Button onClick={() => push('/nested-2')}>nest more</Button>
+      <h1>NestedOne</h1>
     </div>
   );
 };
