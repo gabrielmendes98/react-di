@@ -1,10 +1,10 @@
-.container--home {
+.home-container {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.logo {
+.home-logo {
   cursor: pointer;
   color: blueviolet;
   text-align: left;

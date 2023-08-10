@@ -1,7 +1,7 @@
 import './App.css';
 import { Breadcrumb } from './features/breadcrumb';
 import { Header } from './features/header/container';
-import { RouteProvider } from './routes';
+import { RouteProvider } from './routes/provider';
 import { Router } from './routes/router';
 
 function App() {

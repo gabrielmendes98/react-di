@@ -1,8 +1,8 @@
-.container {
+.breadcrumb-container {
   margin-bottom: 50px;
 }
 
-.link {
+.breadcrumb-link {
   cursor: pointer;
   color: blue;
 }

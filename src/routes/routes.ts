@@ -1,15 +1,8 @@
 import { NestedOne } from '../features/nested-1/container';
 import { PersonListContainer } from '../features/person-list/container';
 import { PersonRegisterContainer } from '../features/person-register/container';
+import { Route, Routes } from './interfaces';
 import { Notfound } from './not-found';
-
-export type Route = {
-  path: string;
-  title: string;
-  component: any;
-};
-
-export type Routes = Record<string, Route>;
 
 export const notFoundRoute: Route = {
   path: '/404',

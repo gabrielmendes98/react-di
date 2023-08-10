@@ -1,4 +1,4 @@
-import { useRoute } from '.';
+import { useRoute } from './useRoute';
 
 export const Notfound = () => {
   const { goBack } = useRoute();

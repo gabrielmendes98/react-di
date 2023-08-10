@@ -1,4 +1,4 @@
-import { useRoute } from '.';
+import { useRoute } from './useRoute';
 
 export const Router = () => {
   const { currentRoute } = useRoute();

@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
-import { useRoute } from '../../routes';
 import './style.css';
+import { useRoute } from '../../routes/useRoute';
 
 export const Breadcrumb = () => {
   const { currentStack, goBack } = useRoute();
 
   return (
-    <div className="container">
+    <div className="breadcrumb-container">
       {currentStack.map((route, index) => (
         <Fragment key={index}>
-          <span className="link" onClick={() => goBack(route.path)}>
+          <span className="breadcrumb-slink" onClick={() => goBack(route.path)}>
             {route.title}
           </span>
           <span> / </span>

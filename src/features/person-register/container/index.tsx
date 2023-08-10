@@ -1,5 +1,5 @@
 import { Button } from '../../../components';
-import { useRoute } from '../../../routes';
+import { useRoute } from '../../../routes/useRoute';
 
 export const PersonRegisterContainer = () => {
   const { goBack, push } = useRoute();

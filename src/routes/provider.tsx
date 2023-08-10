@@ -1,38 +1,11 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Route, defaultRoute, notFoundRoute, routes } from './routes';
+import { defaultRoute, notFoundRoute, routes } from './routes';
+import { ContextProps, RouteContextType, Stack } from './interfaces';
 
-type Props = {
-  children: React.ReactNode;
-};
+export const RouteContext = React.createContext<RouteContextType | null>(null);
 
-type Stack = Route[][];
-
-type PushOptions = {
-  newStack?: boolean;
-};
-
-type RouteContextType = {
-  stack: Stack;
-  push: (path: string, options?: PushOptions) => void;
-  goBack: (path?: string) => void;
-  currentRoute: Route;
-  currentStack: Route[];
-};
-
-const RouteContext = React.createContext<RouteContextType | null>(null);
-
-export const useRoute = () => {
-  const context = React.useContext(RouteContext);
-  if (!context) {
-    throw new Error('useRoute must be used within a RouteProvider');
-  }
-  return context;
-};
-
-export const RouteProvider = ({ children }: Props) => {
+export const RouteProvider = ({ children }: ContextProps) => {
   const [stack, setStack] = useState<Stack>([[defaultRoute]]);
-
-  console.log(stack);
 
   const currentStack = useMemo(() => stack[stack.length - 1], [stack]);
   const currentRoute = useMemo(
@@ -96,5 +69,3 @@ export const RouteProvider = ({ children }: Props) => {
     <RouteContext.Provider value={value}>{children}</RouteContext.Provider>
   );
 };
-
-// [[x, x, x], [a, a], [b]]
