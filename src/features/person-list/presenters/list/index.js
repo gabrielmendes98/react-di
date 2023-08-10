@@ -1,4 +1,4 @@
-import { Button } from "../../../../components";
+import { Button } from 'src/components';
 
 /**
  * @param {Object} props
@@ -10,7 +10,7 @@ export const List = ({ list, handleShowDetails }) => (
   <ul>
     {list.map((person) => (
       <li key={person.id}>
-        {person.name}{" "}
+        {person.name}{' '}
         <Button onClick={() => handleShowDetails(person.id)}>
           show details
         </Button>

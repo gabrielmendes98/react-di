@@ -3,8 +3,8 @@ import { List } from '../presenters/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 import { getPersonDetails, getPersonList } from '../data';
-import { Button } from '../../../components';
-import { useRoute } from '../../../routes/useRoute';
+import { Button } from 'src/components';
+import { useRoute } from 'src/routes/useRoute';
 
 /**
  * @param {Object} props

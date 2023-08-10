@@ -1,6 +1,6 @@
-import { NestedOne } from '../features/nested-1/container';
-import { PersonListContainer } from '../features/person-list/container';
-import { PersonRegisterContainer } from '../features/person-register/container';
+import { NestedOne } from 'src/features/nested-1/container';
+import { PersonListContainer } from 'src/features/person-list/container';
+import { PersonRegisterContainer } from 'src/features/person-register/container';
 import { Route, Routes } from './interfaces';
 import { Notfound } from './not-found';
 

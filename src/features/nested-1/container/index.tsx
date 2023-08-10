@@ -1,5 +1,5 @@
-import { Button } from '../../../components';
-import { useRoute } from '../../../routes/useRoute';
+import { Button } from 'src/components';
+import { useRoute } from 'src/routes/useRoute';
 
 export const NestedOne = () => {
   const { goBack, push } = useRoute();

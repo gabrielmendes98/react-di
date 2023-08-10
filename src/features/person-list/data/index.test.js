@@ -1,5 +1,5 @@
 import { getPersonList, getPersonDetails } from './index';
-import { api } from '../../../api';
+import { api } from 'src/api';
 import { mapPersonList } from './mappers';
 
 jest.mock('../../../api');
