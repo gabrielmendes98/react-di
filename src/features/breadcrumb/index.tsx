@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import './style.css';
 import { useRoute } from 'src/routes/useRoute';
+import './style.css';
 
 export const Breadcrumb = () => {
   const { currentStack, goBack } = useRoute();

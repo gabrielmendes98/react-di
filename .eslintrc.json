@@ -5,9 +5,8 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "standard-with-typescript",
-    "plugin:import/typescript",
     "plugin:import/recommended",
+    "plugin:import/typescript",
     "prettier"
   ],
   "plugins": ["react", "prettier", "@typescript-eslint", "import"],
@@ -19,17 +18,72 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/triple-slash-reference": "off"
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "import/no-unresolved": "error",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "external",
+          "internal",
+          "builtin",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        "pathGroups": [
+          {
+            "pattern": "src/api/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "src/commons/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "src/components/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "src/features/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "src/routes/**",
+            "group": "builtin",
+            "position": "after"
+          }
+        ],
+        "warnOnUnassignedImports": true
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      },
       "typescript": {
         "alwaysTryTypes": true,
         "project": "./tsconfig.json"
       }
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }
