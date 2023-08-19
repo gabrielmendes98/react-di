@@ -5,6 +5,8 @@ import { List } from '../presenters/list';
 import { usePersonList as _usePersonList } from '../hooks/use-person-list';
 import { usePersonDetails as _usePersonDetails } from '../hooks/use-person-details';
 import { getPersonDetails, getPersonList } from '../data';
+import { ListLoader } from '../presenters/list-loader';
+import { DetailsLoader } from '../presenters/details-loader';
 
 /**
  * @param {Object} props
@@ -29,11 +31,11 @@ export const PersonListContainer = ({ usePersonList, usePersonDetails }) => {
       {personList && !loadingPersonList && (
         <List list={personList} handleShowDetails={showPersonDetails} />
       )}
-      {loadingPersonList && <div>Loading person list...</div>}
+      {loadingPersonList && <ListLoader />}
       {personDetails && !loadingPersonDetails && (
         <Details details={personDetails} />
       )}
-      {loadingPersonDetails && <div>Loading person details...</div>}
+      {loadingPersonDetails && <DetailsLoader />}
     </>
   );
 };
