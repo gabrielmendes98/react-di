@@ -89,6 +89,8 @@ localização de diferentes partes do código.
 ## Adicionais
 
 - Roteamento sem trocar de rotas
+- Breadcrumb automatico
+- Tslint e Eslint
 - TS e JS no mesmo projeto
 - TS Config + Organizador de imports
 - Skeleton Loader
