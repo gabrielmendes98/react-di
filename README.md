@@ -92,3 +92,4 @@ localização de diferentes partes do código.
 - TS e JS no mesmo projeto
 - TS Config + Organizador de imports
 - Skeleton Loader
+- Feature Toggle
