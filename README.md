@@ -1,64 +1,79 @@
 # React Dependency Injection
 
-## Camadas de Arquitetura
+This project was created as a POC to the new architecture of a real project that
+I was working on. The project was already created, but the architecture was not
+good enough, so we decided to create a new one. Our requirements was:
 
-O projeto é organizado em quatro camadas distintas:
+1. Our project was a web component inside a legacy project, so we couldn't use
+   real routing, like changing the full page url, so we needed to create a
+   router that could be used inside the web component.
+2. We should be able to use both TS and JS in the same project. Because the
+   legacy project was using JS and the new one will be using TS, we needed to
+   find a way to use both in the same project.
+3. We needed to create a new architecture that could be easily integrated with
+   the legacy project.
+4. We should have feature toggles to easily enable/disable new features.
+5. We needed to decouple the code as much as possible to make it easier to
+   maintain and extend.
 
-### Camada Domain
+## Architecture Layers
 
-A camada Domain é responsável por definir os objetos de domínio do aplicativo.
-Aqui são encontradas as entidades centrais, interfaces de repositório e lógica
-fundamental que reflete as regras de negócios do sistema.
+The project is organized into four distinct layers:
 
-### Camada Application
+### Domain Layer
 
-A camada Application assume a responsabilidade de implementar a lógica de
-negócios do aplicativo. Ela utiliza os objetos de domínio definidos na camada
-Domain para criar os casos de uso e interações que representam a funcionalidade
-central do aplicativo.
+The Domain Layer is responsible for defining the application's domain objects.
+Here you can find the central entities, repository interfaces and fundamental
+business logic that reflects the system's rules.
 
-### Camada Infrastructure
+### Application Layer
 
-A camada Infrastructure desempenha um papel crucial na orquestração do
-aplicativo. Aqui, a lógica de negócios da camada Application é combinada com
-serviços do mundo real, como APIs e armazenamentos. Além disso, a camada
-Infrastructure converte os objetos de domínio em objetos compreensíveis para as
-fontes de dados e vice-versa.
+The Application layer takes responsibility for implementing the business logic
+of the application. It uses the domain objects defined in the Domain layer to
+create the use cases and interactions that represent the core functionality of
+the application.
 
-### Camada Routing
+### Infrastructure Layer
 
-A camada Routing lida com a navegação e roteamento do usuário. É responsável por
-encaminhar as solicitações do usuário para os controladores apropriados nas
-outras camadas, iniciando assim o fluxo de funcionalidades do aplicativo.
+The Infrastructure layer plays a crucial role in application orchestration.
+Here, the business logic of the Application layer is combined with real-world
+services such as APIs and storage. In addition, the Infrastructure layer
+converts domain objects into understandable objects for data sources and vice
+versa.
 
-## Estrutura de Pastas
+### Routing Layer
 
-A estrutura de pastas adotada no projeto é projetada para refletir a organização
-das diferentes camadas da arquitetura. Isso promove a clareza e facilita a
-localização de diferentes partes do código.
+The Routing layer handles user navigation and routing. It is responsible for
+forwarding user requests to the appropriate controllers in the other layers,
+thus initiating the flow of application functionality.
 
-- **Domain**: Nesta pasta, estão definidos os objetos de domínio, como entidades
-  e interfaces de repositório.
+## Folder Structure
 
-- **Hooks**: A pasta Hooks é onde a lógica de negócios é implementada. Ela
-  utiliza a camada Data para buscar dados de fontes externas, como APIs ou
-  armazenamentos, e cria os casos de uso necessários para a camada Application.
+The folder structure adopted in the project is designed to reflect the
+organization of different layers of the architecture. This promotes clarity and
+facilitates the location of different parts of the code.
 
-- **Data**: A camada Data é responsável pela integração com serviços externos,
-  como APIs e armazenamentos. Ela também realiza a conversão entre os objetos de
-  domínio e os formatos de dados exigidos pelas fontes externas.
+- **Domain**: In this folder, the domain objects are defined, such as entities
+  and repository interfaces.
 
-- **Container**: A pasta Container é responsável por orquestrar as regras de
-  negócios e a lógica dos apresentadores. Ela utiliza os Hooks da camada
-  Application e fornece as dependências necessárias para os controladores.
+- **Hooks**: This folder is where the business logic is implemented. It uses the
+  Data layer to search for data from external sources, such as APIs or storages,
+  and creates the necessary use cases for the Application layer.
 
-- **Presenters**: Nesta pasta, estão os componentes de interface do usuário
-  (UI). Eles são focados exclusivamente na apresentação visual e não contêm
-  lógica de negócios.
+- **Data**: This layer is responsible for integrating with external services,
+  such as APIs and storages. It also performs the conversion between the domain
+  objects and the formats of data required by the external sources.
 
-- **Routes**: A pasta Routes atua como o ponto de entrada da aplicação. Ela
-  chama os containers apropriados para as rotas definidas, dando início ao fluxo
-  de funcionalidades.
+- **Container**: This folder is responsible for orchestrating the business rules
+  and the logic of presenters. It uses the Hooks from the Application layer and
+  provides the necessary dependencies for the controllers.
+
+- **Presenters**: This folder contains the UI components. They are focused
+  exclusively on visual presentation and do not contain business logic.
+
+- **Routes**: This folder acts as the entry point of the application. It calls
+  the appropriate containers for the defined routes, starting the flow of
+  functionalities.
 
 <pre>
 ├── src
@@ -83,15 +98,15 @@ localização de diferentes partes do código.
 
 ## Architecture
 
-<img src="./resources/layers.jpg" />
+<img src="./resources/layers.jpg" width="300" />
 <img src="./resources/architecture.jpg" />
 
-## Adicionais
+## Features
 
-- Roteamento sem trocar de rotas
-- Breadcrumb automatico
-- Tslint e Eslint
-- TS e JS no mesmo projeto
-- TS Config + Organizador de imports
+- Routing without changing routes
+- Automatic breadcrumb
+- Tslint and Eslint
+- TS and JS in the same project
+- TS Config + Imports organizer
 - Skeleton Loader
 - Feature Toggle
